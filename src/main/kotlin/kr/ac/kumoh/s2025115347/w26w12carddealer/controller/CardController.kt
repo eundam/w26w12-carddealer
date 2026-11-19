@@ -1,0 +1,17 @@
+package kr.ac.kumoh.s2025115347.w26w12carddealer.controller
+
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.GetMapping
+
+@Controller
+class CardController {
+    @GetMapping("/cards/random")
+    fun getRandomCards(model: Model): String {
+        model.addAttribute(
+            "cards",
+            "ace_of_spades.png"
+        )
+        return "cards"
+    }
+}
