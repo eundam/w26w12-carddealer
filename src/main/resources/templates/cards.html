@@ -31,12 +31,25 @@
         </div>
     </div>
 
-    <a
-            href=""
-            onclick="location.reload(); return false;"
-            class="inline-block px-8 py-3.5 text-base font-semibold text-emerald-950 bg-amber-400 rounded-full shadow-lg hover:bg-amber-300 hover:-translate-y-0.5 active:translate-y-0 transition">
-        다시 뽑기
-    </a>
+    <div class="flex flex-wrap justify-center gap-3">
+        <a
+                th:href="@{/cards/sort(order='asc')}"
+                th:classappend="${order == 'asc'} ? 'ring-4 ring-white' : ''"
+                class="inline-block px-6 py-3 text-base font-semibold text-emerald-950 bg-emerald-200 rounded-full shadow-lg hover:bg-emerald-100 hover:-translate-y-0.5 active:translate-y-0 transition">
+            작은 순 ↑
+        </a>
+        <a
+                th:href="@{/cards/sort(order='desc')}"
+                th:classappend="${order == 'desc'} ? 'ring-4 ring-white' : ''"
+                class="inline-block px-6 py-3 text-base font-semibold text-emerald-950 bg-emerald-200 rounded-full shadow-lg hover:bg-emerald-100 hover:-translate-y-0.5 active:translate-y-0 transition">
+            큰 순 ↓
+        </a>
+        <a
+                th:href="@{/cards/random}"
+                class="inline-block px-8 py-3 text-base font-semibold text-emerald-950 bg-amber-400 rounded-full shadow-lg hover:bg-amber-300 hover:-translate-y-0.5 active:translate-y-0 transition">
+            다시 뽑기
+        </a>
+    </div>
 </div>
 </body>
 </html>

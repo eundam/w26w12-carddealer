@@ -10,9 +10,15 @@ class CardService(
 ) {
     fun getCards(): List<Card> = repository.cards
 
+    // 현재 뽑은 카드를 작은 순(오름차순) 또는 큰 순(내림차순)으로 정렬해서 반환
+    fun getSortedCards(descending: Boolean): List<Card> {
+        val sorted = repository.cards.sortedBy { it.value }
+        return if (descending) sorted.reversed() else sorted
+    }
+
     fun dealCards(count: Int = 5) {
-        val suits = arrayOf("spades", "diamonds", "hearts", "clubs")
-        val ranks = arrayOf("2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king", "ace")
+        val suits = Card.SUITS
+        val ranks = Card.RANKS
 
         repository.deleteAll()
 
